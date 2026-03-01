@@ -1,0 +1,14 @@
+apiVerison: V1
+kind: Pod 
+metadata: 
+  name: my-anil-pd
+  labels: 
+    app: nginx
+    enviornment: dev
+  spec: 
+   containers: 
+    - name: nginx-cot
+      image: nginx
+      ports:
+        - containerPort: 80
+           
