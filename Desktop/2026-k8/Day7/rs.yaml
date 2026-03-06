@@ -1,0 +1,17 @@
+apiVersion: apps/v1 
+kind: ReplicaSet
+metadata: 
+  name: anilrs
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: nginxrs
+  template: 
+    metadata: 
+     labels: 
+       app: nginxrs
+    spec: 
+      containers:
+        - name: testanilrs
+          image: nginx
