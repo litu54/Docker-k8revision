@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backdeploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend2
+  template:
+    metadata:
+      labels:
+        app: backend2
+    spec:
+      containers:
+      - name: backend-cntr
+        image: nginx
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-svc-2
+spec:
+  type: ClusterIP
+  selector:
+    app: backend2
+  ports:
+  - port: 8080
+    targetPort: 80
